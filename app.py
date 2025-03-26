@@ -71,7 +71,7 @@ def plot_radar_chart(player_data, metrics, prop):
     values = np.concatenate((values, [values[0]]))
     angles += angles[:1]
     
-    fig, ax = plt.subplots(figsize=(4, 4), subplot_kw=dict(polar=True))  # 調整圖表大小
+    fig, ax = plt.subplots(figsize=(4, 4), subplot_kw=dict(polar=True))
     color = (0.4, 0.6, 0.8)
     ax.fill(angles, values, color=color, alpha=0.3)
     ax.plot(angles, values, color=color, linewidth=2)
@@ -86,7 +86,7 @@ def plot_radar_chart(player_data, metrics, prop):
     return fig
 
 def main():
-    st.set_page_config(page_title="中華職棒球員數據", layout="wide")
+    st.set_page_config(page_title="2024中華職棒球員數據", layout="wide")
     
     prop = setup_chinese_font()
     
@@ -143,7 +143,8 @@ def main():
         
         st.write("### PR 值橫條圖")
         fig, ax = plt.subplots(figsize=(6, 4))
-        sns.barplot(x="PR", y="項目", data=pr_data, palette="coolwarm", ax=ax, orient='h', width=0.6)
+        sns.barplot(x="PR", y="項目", data=pr_data, hue="項目", palette="coolwarm", 
+                    ax=ax, orient='h', width=0.6, legend=False)
         ax.set_xlim(0, 99)
         ax.set_xlabel("PR")
         ax.set_ylabel("")
